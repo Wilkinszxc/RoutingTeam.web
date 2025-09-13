@@ -1,14 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>UF Routing KPI Gen</title>
-    
-    <link rel="stylesheet" href="style.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="https://marketplace.canva.com/FaoS8/MAErepFaoS8/1/tl/canva-person-icon-MAErepFaoS8.png" type="image/png">
+  <title>UF ROUTING & PURCHASING</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi sed dolore esse alias aliquid omnis enim quae quia laboriosam repellat culpa repellendus sint, debitis expedita ullam eligendi? Tempore, et quasi.
+  <div class="wrap">
+    <!-- Step 1 -->
+    <section id="step1" class="card show visible">
+      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
+      <div class="content">
+        <p class="muted">Step 1 of 3</p>
+        <div class="form-row">
+          <label for="date">Date</label>
+          <input id="date" type="date" />
+        </div>
+        <div class="form-row">
+          <label for="dept">Department</label>
+          <select id="dept">
+            <option value="" selected disabled>Select department</option>
+            <option>UF - Routing</option>
+            <option>UF - Purchasing</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="name">Name</label>
+          <select id="name" disabled>
+            <option value="" selected disabled>Select name</option>
+          </select>
+        </div>
+        <div class="actions">
+          <button id="toStep2" class="btn" disabled>Next</button>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Step 2 -->
+    <section id="step2" class="card">
+      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
+      <div class="content">
+        <p class="muted">Step 2 of 3</p>
+        <div id="metricsForm"></div>
+        <div class="actions">
+          <button id="backTo1" class="btn secondary">Back to Info</button>
+          <button id="reviewBtn" class="btn">Review</button>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- Step 3 -->
+    <section id="step3" class="card">
+      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
+      <div class="content">
+        <p class="muted">Step 3 of 3</p>
+        <table id="outputTable" aria-label="Submitted values">
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="actions">
+          <button id="editBtn" class="btn secondary">Edit Metrics</button>
+          <button id="copyBtn" class="btn">Copy Values</button>
+          <a href="https://docs.google.com/spreadsheets/d/16cF70AmvPLxft1T4DuEMM0ylLzfHhzovbrs4Bpgoidk/edit?usp=sharing" target="_blank"><button id="newEntryBtn" class="btn secondary">Team KPI Sheet</button></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
+ 

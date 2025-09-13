@@ -1,4 +1,47 @@
-* {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
 
+    :root{
+      --bg:#f4f6f9;
+      --card:#ffffff;
+      --text:#0f172a;
+      --muted:#475569;
+      --border:#d9e1ea;
+      --accent:#0ea5e9;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);margin:0;color:var(--text)}
+    .wrap{max-width:600px;margin:28px auto;padding:0 14px}
+    header.hdr{background:#0f172a;color:#fff;font-weight:800;text-align:center;letter-spacing:.2px;padding:14px;border-radius:10px}
+    section.card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      margin-top:14px;
+      overflow:hidden;
+      display:none;            /* hidden until revealed */
+      opacity:0;               /* start faded out */
+      transform:translateY(8px);
+      transition:opacity .35s ease, transform .35s ease;
+    }
+    section.card.show{display:block;}     /* make it participate in layout */
+    section.card.visible{opacity:1; transform:translateY(0);} /* animate in */
+    .content{padding:16px}
+ 
+    /* Vertical fields: label on top, input below */
+    .form-row{display:flex;flex-direction:column;gap:8px;margin:12px 0}
+    .form-row label{font-weight:700;font-size:14px}
+    input[type="number"], select, input[type="date"]{
+      width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;font-size:14px;outline:none
+    }
+    input[type="number"]:focus, select:focus, input[type="date"]:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.25)}
+ 
+    .actions{display:flex;gap:10px;margin-top:14px;justify-content:flex-end}
+    button{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
+    .btn{background:var(--accent);color:#fff}
+    .btn.secondary{background:#e2e8f0;color:#0f172a}
+    .btn:disabled{opacity:.6;cursor:not-allowed}
+ 
+    table{width:100%;border-collapse:collapse;border:1px solid var(--border)}
+    th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
+    th{background:#f1f5f9}
+    .muted{color:var(--muted);font-size:13px}

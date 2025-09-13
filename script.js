@@ -1,122 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>UF ROUTING & PURCHASING</title>
-  <style>
-    :root{
-      --bg:#f4f6f9;
-      --card:#ffffff;
-      --text:#0f172a;
-      --muted:#475569;
-      --border:#d9e1ea;
-      --accent:#0ea5e9;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);margin:0;color:var(--text)}
-    .wrap{max-width:980px;margin:28px auto;padding:0 14px}
-    header.hdr{background:#0f172a;color:#fff;font-weight:800;text-align:center;letter-spacing:.2px;padding:14px;border-radius:10px}
-    section.card{
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:10px;
-      margin-top:14px;
-      overflow:hidden;
-      display:none;            /* hidden until revealed */
-      opacity:0;               /* start faded out */
-      transform:translateY(8px);
-      transition:opacity .35s ease, transform .35s ease;
-    }
-    section.card.show{display:block;}     /* make it participate in layout */
-    section.card.visible{opacity:1; transform:translateY(0);} /* animate in */
-    .content{padding:16px}
- 
-    /* Vertical fields: label on top, input below */
-    .form-row{display:flex;flex-direction:column;gap:8px;margin:12px 0}
-    .form-row label{font-weight:700;font-size:14px}
-    input[type="number"], select, input[type="date"]{
-      width:100%;padding:10px 12px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;font-size:14px;outline:none
-    }
-    input[type="number"]:focus, select:focus, input[type="date"]:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(96,165,250,.25)}
- 
-    .actions{display:flex;gap:10px;margin-top:14px;justify-content:flex-end}
-    button{border:0;border-radius:8px;padding:10px 14px;font-weight:700;cursor:pointer}
-    .btn{background:var(--accent);color:#fff}
-    .btn.secondary{background:#e2e8f0;color:#0f172a}
-    .btn:disabled{opacity:.6;cursor:not-allowed}
- 
-    table{width:100%;border-collapse:collapse;border:1px solid var(--border)}
-    th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;font-size:14px}
-    th{background:#f1f5f9}
-    .muted{color:var(--muted);font-size:13px}
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <!-- Step 1 -->
-    <section id="step1" class="card show visible">
-      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
-      <div class="content">
-        <p class="muted">Step 1 of 3</p>
-        <div class="form-row">
-          <label for="date">Date</label>
-          <input id="date" type="date" />
-        </div>
-        <div class="form-row">
-          <label for="dept">Department</label>
-          <select id="dept">
-            <option value="" selected disabled>Select department</option>
-            <option>UF - Routing</option>
-            <option>UF - Purchasing</option>
-          </select>
-        </div>
-        <div class="form-row">
-          <label for="name">Name</label>
-          <select id="name" disabled>
-            <option value="" selected disabled>Select name</option>
-          </select>
-        </div>
-        <div class="actions">
-          <button id="toStep2" class="btn" disabled>Next â†’</button>
-        </div>
-      </div>
-    </section>
- 
-    <!-- Step 2 -->
-    <section id="step2" class="card">
-      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
-      <div class="content">
-        <p class="muted">Step 2 of 3</p>
-        <div id="metricsForm"></div>
-        <div class="actions">
-          <button id="backTo1" class="btn secondary">â†‘ Back to Info</button>
-          <button id="reviewBtn" class="btn">Review â†’</button>
-        </div>
-      </div>
-    </section>
- 
-    <!-- Step 3 -->
-    <section id="step3" class="card">
-      <header class="hdr">UF ROUTING &amp; PURCHASING</header>
-      <div class="content">
-        <p class="muted">Step 3 of 3</p>
-        <table id="outputTable" aria-label="Submitted values">
-          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
-          <tbody></tbody>
-        </table>
-        <div class="actions">
-          <button id="editBtn" class="btn secondary">â†‘ Edit Metrics</button>
-          <button id="copyBtn" class="btn">Copy Values</button>
-          <button id="newEntryBtn" class="btn secondary">New Entry</button>
-        </div>
-      </div>
-    </section>
-  </div>
- 
-<script>
-// â€”â€”â€” Data â€”â€”â€”
 const PEOPLE = [
   {name:"Al Wilkins Burgos",dept:"UF - Routing"},
   {name:"Aloha Mae Tayuran",dept:"UF - Routing"},
@@ -131,7 +12,6 @@ const PEOPLE = [
   {name:"Dina Liza Abaa",dept:"UF - Purchasing"},
   {name:"Gwyneth Olga Olaer",dept:"UF - Routing"},
   {name:"Hobert Ramos",dept:"UF - Routing"},
-  {name:"Jan Ivah Singson",dept:"UF - Routing"},
   {name:"Jarel Katug",dept:"UF - Routing"},
   {name:"Jenie Mae Cawaling",dept:"UF - Routing"},
   {name:"Jocelyn Sajol",dept:"UF - Routing"},
@@ -177,7 +57,6 @@ const FIELDS = {
   ]
 };
  
-// â€”â€”â€” Elements â€”â€”â€”
 const step1 = document.getElementById('step1');
 const step2 = document.getElementById('step2');
 const step3 = document.getElementById('step3');
@@ -193,7 +72,6 @@ const editBtn = document.getElementById('editBtn');
 const copyBtn = document.getElementById('copyBtn');
 const newEntryBtn = document.getElementById('newEntryBtn');
  
-// â€”â€”â€” Helpers â€”â€”â€”
 function todayLocalISO(){
   const d = new Date();
   const yyyy = d.getFullYear();
@@ -201,6 +79,7 @@ function todayLocalISO(){
   const dd = String(d.getDate()).padStart(2,'0');
   return `${yyyy}-${mm}-${dd}`;
 }
+
 function buildMetricRows(labels){
   metricsForm.innerHTML = labels.map((label,i)=>`
     <div class="form-row">
@@ -209,21 +88,20 @@ function buildMetricRows(labels){
     </div>
   `).join('');
 }
+
 function revealCard(card){
   if(card.classList.contains('show')) return;
   card.classList.add('show');
-  // allow layout apply, then fade in
+
   requestAnimationFrame(()=>{
     card.classList.add('visible');
     card.scrollIntoView({behavior:'smooth', block:'start'});
   });
 }
  
-// â€”â€”â€” Init â€”â€”â€”
 dateEl.value = todayLocalISO();
 nameEl.disabled = true;
  
-// â€”â€”â€” Events â€”â€”â€”
 deptEl.addEventListener('change', ()=>{
   nameEl.innerHTML = '<option value="" selected disabled>Select name</option>' +
     PEOPLE.filter(p=>p.dept===deptEl.value).map(p=>`<option>${p.name}</option>`).join('');
@@ -273,14 +151,12 @@ newEntryBtn.addEventListener('click', ()=>{
   toStep2Btn.disabled = true;
   outputBody.innerHTML = '';
  
-  // Hide Step 2 and Step 3 again
   step2.classList.remove('show','visible');
   step3.classList.remove('show','visible');
  
   step1.scrollIntoView({behavior:'smooth'});
 });
  
-// Copy only metric values (skip Date/Dept/Name)
 async function copyText(text){
   try{
     await navigator.clipboard.writeText(text);
@@ -308,7 +184,3 @@ copyBtn.addEventListener('click', async ()=>{
     window.prompt('Copy the values below, then paste into Excel:', payload);
   }
 });
-</script>
-</body>
-</html>
- 
