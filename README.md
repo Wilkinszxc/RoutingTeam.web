@@ -8,6 +8,8 @@
 * Cloud
 
 ### Admin
-* KPI Gen
+* KPI Gen ✔
 * Blue Marble
 * Paylocity
+
+*Checked ✔ are done and ✖ is tba*
